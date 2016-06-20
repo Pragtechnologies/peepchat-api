@@ -33,5 +33,6 @@ defmodule Peepchat.Endpoint do
     key: "_peepchat_key",
     signing_salt: "BcpQ5LFh"
 
+  plug CORSPlug
   plug Peepchat.Router
 end
