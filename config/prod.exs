@@ -13,7 +13,8 @@ use Mix.Config
 # which you typically run after static files are built.
 config :peepchat, Peepchat.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  url: [host: "floating-shelf-64402.herokuapp.com", port: 443],
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
   cache_static_manifest: "priv/static/manifest.json"
 
@@ -32,7 +33,7 @@ config :logger, level: :info
 #
 #     config :peepchat, Peepchat.Endpoint,
 #       ...
-#       url: [host: "example.com", port: 443],
+#       url: [host: "floating-shelf-64402.herokuapp.com/", port: 443],
 #       https: [port: 443,
 #               keyfile: System.get_env("SOME_APP_SSL_KEY_PATH"),
 #               certfile: System.get_env("SOME_APP_SSL_CERT_PATH")]
@@ -68,4 +69,4 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+# import_config "prod.secret.exs"
