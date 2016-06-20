@@ -34,3 +34,12 @@ config :phoenix, :format_encoders,
 config :plug, :mimes, %{
   "application/vnd.api+json" => ["json-api"]
 }
+
+config :guardian, Guardian,
+  allowed_algos: ["HS512"], # optional
+  verify_module: Guardian.JWT,  # optional
+  issuer: "Peepchat",
+  ttl: { 30, :days },
+  verify_issuer: true, # optional
+  secret_key: System.get_env("GUARDIAN_SECRET") || "x6V+PuD909P4GhPIlKmwGd/vRiasal0Si23CuYz1yW3mIECqoC6v38oRv6BF8OwD",
+  serializer: Peepchat.GuardianSerializer
